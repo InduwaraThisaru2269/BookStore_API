@@ -1,4 +1,4 @@
-package org.Thisaru.Models;
+package org.Thisaru.models;
 
 public class Author {
     private int id;

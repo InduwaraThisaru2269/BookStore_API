@@ -1,4 +1,4 @@
-package org.Thisaru.Models;
+package org.Thisaru.models;
 
 public class Customer {
     private int id;

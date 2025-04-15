@@ -1,4 +1,4 @@
-package org.Thisaru.Models;
+package org.Thisaru.models;
 
 public class Book {
     private int id;
@@ -8,6 +8,8 @@ public class Book {
     private int publicationYear;
     private int price;
     private int stockQuantity;
+
+    public Book() {}
 
     public Book(int id, String title, int authorId, String isbn, int publicationYear, int price, int stockQuantity) {
         this.id = id;
