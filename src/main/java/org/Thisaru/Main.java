@@ -13,7 +13,7 @@ public class Main {
 
     public static HttpServer startServer() {
         final ResourceConfig config = new ResourceConfig().packages(
-               "org.Thisaru.resources", "org.Thisaru.exceptions", "org.Thisaru.exceptions.mappers"
+               "org.Thisaru.storage;","org.Thisaru.resources", "org.Thisaru.exceptions", "org.Thisaru.exceptions.mappers"
         );
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), config);

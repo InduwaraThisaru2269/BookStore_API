@@ -1,13 +1,16 @@
 package org.Thisaru.models;
 
+import java.util.List;
 import java.util.Map;
 
 public class Cart {
     private int id;
     private int customerId;
-    private Map<Integer, Integer> items; // (BookId, NoOfItems)
+    private List<CartItem> items;
     private boolean isOrdered;
-    public Cart(int id, int customerId, Map<Integer, Integer> items, boolean isOrdered) {
+
+    public Cart() {}
+    public Cart(int id, int customerId, List<CartItem> items, boolean isOrdered) {
         this.id = id;
         this.customerId = customerId;
         this.items = items;
@@ -30,11 +33,11 @@ public class Cart {
         this.customerId = customerId;
     }
 
-    public void setItems(Map<Integer, Integer> items) {
+    public void setItems(List<CartItem> items) {
         this.items = items;
     }
 
-    public Map<Integer, Integer> getItems() {
+    public List<CartItem> getItems() {
         return items;
     }
 

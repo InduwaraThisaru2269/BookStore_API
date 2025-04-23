@@ -1,9 +1,6 @@
 package org.Thisaru.storage;
 
-import org.Thisaru.models.Author;
-import org.Thisaru.models.Book;
-import org.Thisaru.models.Cart;
-import org.Thisaru.models.Customer;
+import org.Thisaru.models.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,4 +112,65 @@ public class InMemoryStorage {
     private static final Map<Integer, Cart> carts = new HashMap<>();
     private static int cartIdCounter = 1;
 
+    public static List<Cart> getAllCarts(){
+        return new ArrayList<>(carts.values());
+    }
+
+    public static Cart getCartById(int id) {
+        return carts.get(id);
+    }
+
+    public static Cart addCart(Cart cart) {
+        cart.setId(cartIdCounter++);
+        carts.put(cart.getId(), cart);
+        return cart;
+    }
+
+    public static Cart updateCart(int id, Cart updatedCart) {
+        updatedCart.setId(id);
+        carts.put(id, updatedCart);
+        return updatedCart;
+    }
+
+    public static void deleteCart(int id) {
+        carts.remove(id);
+    }
+
+    public static boolean cartExists(int id) {
+        return carts.containsKey(id);
+    }
+
+
+    // -- Orders --
+
+    private static final Map<Integer, Order> orders = new HashMap<>();
+    private static int orderIdCounter = 1;
+
+    public static List<Order> getAllOrders() {
+        return new ArrayList<>(orders.values());
+    }
+
+    public static Order getOrderById(int id) {
+        return orders.get(id);
+    }
+
+    public static Order addOrder(Order order) {
+        order.setId(orderIdCounter++);
+        orders.put(order.getId(), order);
+        return order;
+    }
+
+    public static Order updateOrder(int id, Order updatedOrder) {
+        updatedOrder.setId(id);
+        orders.put(id, updatedOrder);
+        return updatedOrder;
+    }
+
+    public static void deleteOrder(int id) {
+        orders.remove(id);
+    }
+
+    public static boolean orderExists(int id) {
+        return orders.containsKey(id);
+    }
 }
