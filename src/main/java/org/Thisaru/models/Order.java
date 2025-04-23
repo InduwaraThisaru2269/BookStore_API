@@ -3,24 +3,24 @@ package org.Thisaru.models;
 import java.util.Map;
 
 public class Order {
-    private int orderId;
+    private int id;
     private int customerId;
-    private Map<Integer, Integer> orderedItems;
+    private Map<Integer, Integer> orderedItems; // (BookId, NoOfItems)
     private double totalPrice;
 
-    public Order(int orderId, int customerId, Map<Integer, Integer> orderedItems, double totalPrice) {
-        this.orderId = orderId;
+    public Order(int id, int customerId, Map<Integer, Integer> orderedItems, double totalPrice) {
+        this.id = id;
         this.customerId = customerId;
         this.orderedItems = orderedItems;
         this.totalPrice = totalPrice;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCustomerId() {

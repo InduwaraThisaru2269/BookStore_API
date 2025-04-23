@@ -1,5 +1,6 @@
 package org.Thisaru.resources;
 
+import org.Thisaru.exceptions.AuthorNotFoundException;
 import org.Thisaru.exceptions.BookNotFoundException;
 import org.Thisaru.models.Book;
 import org.Thisaru.storage.InMemoryStorage;
@@ -21,7 +22,11 @@ public class BookResource {
                     .entity("{\"error\": \"Invalid Input\", \"message\": \"Title is required.\"}")
                     .build();
         }
+        boolean isAuthorExists = InMemoryStorage.authorExists(book.getAuthorId());
 
+        if(!isAuthorExists) {
+            throw new AuthorNotFoundException("Author with Id "+book.getAuthorId()+" is not found.");
+        }
         Book created = InMemoryStorage.addBook(book);
         return Response.status(Response.Status.CREATED).entity(created).build();
     }
@@ -50,6 +55,11 @@ public class BookResource {
     public Response updateBook(@PathParam("id") int id, Book book) {
         if (!InMemoryStorage.bookExists(id)) {
             throw new BookNotFoundException("Book with Id: " + id + " not found.");
+        }
+        boolean isAuthorExists = InMemoryStorage.authorExists(book.getAuthorId());
+
+        if(!isAuthorExists) {
+            throw new AuthorNotFoundException("Author with Id "+book.getAuthorId()+" is not found.");
         }
         Book updatedBook = InMemoryStorage.updateBook(id, book);
         return Response.ok(updatedBook).build();

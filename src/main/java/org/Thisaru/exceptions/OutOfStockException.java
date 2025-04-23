@@ -1,4 +1,7 @@
 package org.Thisaru.exceptions;
 
-public class OutOfStockException {
+public class OutOfStockException extends RuntimeException {
+    public OutOfStockException(String message) {
+        super(message);
+    }
 }
